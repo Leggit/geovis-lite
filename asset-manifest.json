@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/geovis-lite/static/css/main.ec363de0.css",
+    "main.js": "/geovis-lite/static/js/main.9aade24f.js",
+    "index.html": "/geovis-lite/index.html",
+    "main.ec363de0.css.map": "/geovis-lite/static/css/main.ec363de0.css.map",
+    "main.9aade24f.js.map": "/geovis-lite/static/js/main.9aade24f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec363de0.css",
+    "static/js/main.9aade24f.js"
+  ]
+}
