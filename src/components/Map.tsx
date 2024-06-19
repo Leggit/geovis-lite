@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "ol/ol.css";
-import { Map as OLMap, View } from "ol";
+import { Feature, Map as OLMap, View } from "ol";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { OSM, Vector as VectorSource } from "ol/source";
 import { Style, Stroke } from "ol/style";
@@ -52,12 +52,14 @@ const MapComponent: React.FC = () => {
     setError(null);
     const reader = format === "WKT" ? new WKT() : new GeoJSON();
     try {
-      const features = reader.readFeatures(e.target.value, {
-        dataProjection: projection,
-        featureProjection: "EPSG:3857",
-      });
+      const feature = new Feature(
+        reader.readGeometry(e.target.value, {
+          dataProjection: projection,
+          featureProjection: "EPSG:3857",
+        })
+      );
       vectorSource.clear();
-      vectorSource.addFeatures(features);
+      vectorSource.addFeature(feature);
     } catch (err) {
       setError("Inalid " + format);
       console.error(`Invalid ${format} format`, err);
